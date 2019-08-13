@@ -9,6 +9,7 @@ const inquirer = require('inquirer');
         message: "Please choose from an option below: ",
         choices: [
           "Add new contact",
+          "Get today's date",
           "Exit"
         ]
       }
@@ -22,6 +23,9 @@ const inquirer = require('inquirer');
       switch(response.mainMenuChoice){
         case "Add new contact":
           this.addContact();
+          break;
+        case "Get today's date":
+          this.getDate();
           break;
         case "Exit":
           this.exit();
@@ -40,8 +44,16 @@ const inquirer = require('inquirer');
     }
 
     addContact(){
-     this.clear();
      console.log("addContact called");
+     this.main();
+   }
+
+   getDate(){
+     var today = new Date();
+     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+     var dateTime = date+' '+time;
+     console.log(dateTime);
      this.main();
    }
 
